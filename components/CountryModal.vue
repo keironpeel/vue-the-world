@@ -17,19 +17,19 @@ function stopTabbing(e) {
   if (e.keyCode === 9 || (e.shiftKey && e.keyCode == 9)) {
     closeButton.value.focus()
     e.preventDefault()
-  } else if (e.key === "Escape") {
+  } else if (e.key === 'Escape') {
     modalStore.closeModal()
     countryStore.modalCountryName = ''
     countryStore.lastFocussedCountry.focus()
-   }
+  }
 }
 
 function handleClose(e) {
-   if (e.type === 'click' || e.keyCode === 13 || e.keyCode === 32) {
+  if (e.type === 'click' || e.keyCode === 13 || e.keyCode === 32) {
     modalStore.closeModal()
     countryStore.modalCountryName = ''
     countryStore.lastFocussedCountry.focus()
-   }
+  }
 }
 
 function closeModalOnClickOff(e) {
@@ -78,16 +78,24 @@ const getCountries = computed(() => {
       aria-labelledby="countryName"
       tabindex="-1"
     >
-    <div class="flex justify-end col-span-2">
-      <button class="border py-2 px-4" ref="closeButton" @keydown="(e) => stopTabbing(e)" @keypress="(e) => handleClose(e)" @click="(e) => handleClose(e)">Close</button>
-    </div>
+      <div class="flex justify-end col-span-2">
+        <button
+          class="border py-2 px-4"
+          ref="closeButton"
+          @keydown="(e) => stopTabbing(e)"
+          @keypress="(e) => handleClose(e)"
+          @click="(e) => handleClose(e)"
+        >
+          Close
+        </button>
+      </div>
       <div>
         <img :src="country.flags.png" alt="" class="shadow-lg" />
       </div>
       <div>
         <p>
           <span class="font-bold">Name:</span>
-          <h2 id="countryName">{{ country.name.common }}</h2>
+          <span id="countryName">{{ country.name.common }}</span>
         </p>
         <p><span class="font-bold">Continent:</span> {{ country.region }}</p>
         <p>

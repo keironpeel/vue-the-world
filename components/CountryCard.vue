@@ -35,7 +35,7 @@ function openModal(e) {
     @keypress="(e) => openModal(e)"
   >
     <button class="p-4 grid gap-2" ref="currentCard">
-      <h2 class="font-bold text-2xl">{{ props.name }}</h2>
+      <h2 class="font-bold text-xl xl:text-2xl">{{ props.name }}</h2>
       <img :src="props.flag" alt="" class="w-full h-auto" />
     </button>
   </li>
